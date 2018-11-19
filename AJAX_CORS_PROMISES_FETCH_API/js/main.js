@@ -44,46 +44,47 @@
 
 //PROMISES
 
-document.querySelector("button").addEventListener("click", getJokes);
+//document.querySelector("button").addEventListener("click", multiplier);
 
-function getJokes(){
-    return new Promise((resolve, reject) =>{
-        let url = "https://api.chucknorris.io/jokes/random";
-        //Code here
-        $.get(url, joke=> {
-            if (joke&& joke.value){
-                resolve(joke.value);
-            }
-            reject(new Error("Could not retrieve joke"));
-        });
-    });
-}
+// function getJokes(){
+//     return new Promise((resolve, reject) =>{
+//         let url = "https://api.chucknorris.io/jokes/random";
+//         //Code here
+//         $.get(url, joke=> {
+//             if (joke&& joke.value){
+//                 resolve(joke.value);
+//             }
+//             reject(new Error("Could not retrieve joke"));
+//         });
+//     });
+// }
 
-function getJokes(){
-    let jokes = [];
-    getJoke()
-        .then(joke => {
-            jokes.push(joke);
-            return getJoke();
-        })
-        .then(joke => {
-            jokes.push(joke);
-            return getJoke();
-        })
-        .then(joke => {
-            jokes.push(joke);
-            return getJoke();
-        })
-        .then(joke => {
-            jokes.push(joke);
-            return getJoke();
-        })
-        .then(joke => {
-            jokes.push(joke);
-            return getJoke();
-        })
-        .catch(error => console.log(error));
-}
+// function getJokes(){
+//     let jokes = [];
+    
+//     getJoke()
+//         .then(joke => {
+//             jokes.push(joke);
+//             return getJoke();
+//         })
+//         .then(joke => {
+//             jokes.push(joke);
+//             return getJoke();
+//         })
+//         .then(joke => {
+//             jokes.push(joke);
+//             return getJoke();
+//         })
+//         .then(joke => {
+//             jokes.push(joke);
+//             return getJoke();
+//         })
+//         .then(joke => {
+//             jokes.push(joke);
+//             return getJoke();
+//         })
+//         .catch(error => console.log(error));
+// }
 
 
     // let url = "https://api.chucknorris.io/jokes/random";
@@ -167,3 +168,43 @@ function getJokes(){
 //             });
 //     console.log("ran before promises");
 
+//Promises with all feature *************
+// function getJokes(){
+//     let jokePromises = [
+//         getJoke(),
+//         getJoke(),
+//         getJoke(),
+//         getJoke(),
+//         getJoke()
+//     ];
+//     Promise.all(jokePromises)
+//         .then(jokes => {
+//             console.log(jokes);
+//         })
+//         .catch(error => console.log(error));
+// }
+
+function multiplier(x, y, secs){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            let answer = x * y;
+            if (isNaN(answer)){
+                reject(new Error("Input needs to be numbers"));
+            }
+            resolve(answer);
+        }, secs * 1000);
+    });
+}
+let promises = [
+    multiplier(1,2,2),
+    multiplier(5, 10, 4),
+    multiplier(6,7,6)
+];
+
+// Promise.all(promises)
+//     .then(answer => console.log(answer))
+//     .catch(error => console.log(error));
+
+Promise.race(promises)
+.then(answer => console.log(answer))
+.catch(error => console.log(error));
