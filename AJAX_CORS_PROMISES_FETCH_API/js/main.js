@@ -1,5 +1,5 @@
 //console.log('test');
-document.querySelector("button").addEventListener("click", getUserData);
+//document.querySelector("button").addEventListener("click", getUserData);
 
 //XHR
 // function getUserData(){
@@ -24,19 +24,146 @@ document.querySelector("button").addEventListener("click", getUserData);
 //     request.send();
 // }
 
-//Jquery
-function getUserData(){
-    document.getElementById("root").innerHTML = "starting the request";
+//Jquery CORS
+// function getUserData(){
+//     document.getElementById("root").innerHTML = "starting the request";
 
-    $.ajax({
-        url:'https://randomuser.me/api',
-        type: 'GET',
-        success: (data) =>{
-            console.log(data);
-        },
-        error: (error) =>{
-            console.log("Error");
-            console.log(error);
-        }
-    })
+//     $.ajax({
+//         url:'http://localhost:3000/students.json',
+//         type: 'POST',
+//         data: {student: {name: 'John', location: 'Brisbane'}},
+//         success: (data) =>{
+//             console.log(data);
+//         },
+//         error: (error) =>{
+//             console.log("Error");
+//             console.log(error);
+//         }
+//     })
+// }
+
+//PROMISES
+
+document.querySelector("button").addEventListener("click", getJokes);
+
+function getJokes(){
+    return new Promise((resolve, reject) =>{
+        let url = "https://api.chucknorris.io/jokes/random";
+        //Code here
+        $.get(url, joke=> {
+            if (joke&& joke.value){
+                resolve(joke.value);
+            }
+            reject(new Error("Could not retrieve joke"));
+        });
+    });
 }
+
+function getJokes(){
+    let jokes = [];
+    getJoke()
+        .then(joke => {
+            jokes.push(joke);
+            return getJoke();
+        })
+        .then(joke => {
+            jokes.push(joke);
+            return getJoke();
+        })
+        .then(joke => {
+            jokes.push(joke);
+            return getJoke();
+        })
+        .then(joke => {
+            jokes.push(joke);
+            return getJoke();
+        })
+        .then(joke => {
+            jokes.push(joke);
+            return getJoke();
+        })
+        .catch(error => console.log(error));
+}
+
+
+    // let url = "https://api.chucknorris.io/jokes/random";
+    // let jokes = [];
+
+    // $.get(url, (joke1) => {
+    //     $.get(url, (joke2) => {
+    //         $.get(url, (joke3) => {
+    //             $.get(url, (joke4 => {
+    //                 $.get(url, (joke5) => {
+    //                     let jokeArray =[
+    //                         joke1.value,
+    //                         joke2.value,
+    //                         joke3.value,
+    //                         joke4.value,
+    //                         joke5.value,
+    //                     ];
+    //                     console.log(jokeArray);
+    //                 });
+    //             });
+    //         });
+    //     });
+    // });
+
+
+//Promise
+// let x = 2;
+// let y = 5;
+
+// function adder(x,y){
+// return new Promise((resolve, reject) => {
+//     let answer = x + y;
+
+//     if(isNaN(answer)){
+//         reject("Input needs to be a number");
+//     }
+//     resolve(answer);
+// });
+// }
+//Call adder 3 times. Each time taking the previous answer as the first input for the next call
+
+// calculation.then().catch()
+// adder(2,5)
+//     //called when success
+//     .then(answer1 =>{
+//        return adder(answer1, 4)
+//         .then(answer2 =>{
+//            return adder(answer2, "messed up")
+//             .then(answer3 =>{
+//                console.log(answer3);
+//             })
+//             .catch(error => {
+//                 console.log(error);
+//             })
+//     })
+//     //called when rejected
+//     .catch(error => {
+//         console.log("1st catch statement ran");
+//         console.log(error);
+//     });
+//     console.log("ran before promises");
+// })
+
+//console.log(1);
+//console.log(2);
+
+// adder(2,5)
+//     .then(answer1 =>{
+//         return adder(answer1, 4);
+//     })
+//     .then(answer2 =>{
+//         throw "garrets question";
+//         return adder(answer2, 5);
+//     })
+//     .then(answer3 =>{
+//         return adder(answer3);
+//     })
+//     .catch(error => {
+//                 console.log("1st catch statement ran");
+//                 console.log(error);
+//             });
+//     console.log("ran before promises");
+
