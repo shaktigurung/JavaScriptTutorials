@@ -44,7 +44,7 @@
 
 //PROMISES
 
-//document.querySelector("button").addEventListener("click", multiplier);
+//document.querySelector("button").addEventListener("click", getJokes);
 
 // function getJokes(){
 //     return new Promise((resolve, reject) =>{
@@ -184,27 +184,46 @@
 //         .catch(error => console.log(error));
 // }
 
-function multiplier(x, y, secs){
-    return new Promise((resolve, reject)=>{
-        setTimeout(()=>{
-            let answer = x * y;
-            if (isNaN(answer)){
-                reject(new Error("Input needs to be numbers"));
-            }
-            resolve(answer);
-        }, secs * 1000);
-    });
+
+// Promises with race 
+// function multiplier(x, y, secs){
+//     return new Promise((resolve, reject)=>{
+//         setTimeout(()=>{
+//             let answer = x * y;
+//             if (isNaN(answer)){
+//                 reject(new Error("Input needs to be numbers"));
+//             }
+//             resolve(answer);
+//         }, secs * 1000);
+//     });
+// }
+// let promises = [
+//     multiplier(1,2,2),
+//     multiplier(5, 10, 4),
+//     multiplier(6,7,6)
+// ];
+
+// // Promise.all(promises)
+// //     .then(answer => console.log(answer))
+// //     .catch(error => console.log(error));
+
+// Promise.race(promises)
+// .then(answer => console.log(answer))
+// .catch(error => console.log(error));
+
+
+// Fetch API ***************
+document.querySelector("button").addEventListener("click", getJokes);
+
+function getJokes(){
+    fetch("http://localhost:3000/students.json",{
+        method: "POST",
+        body: JSON.stringify({student:{name: "Sarah", location: "Sydney"}}),
+        headers: {
+            "Content-type": "application/json; charset=utf-8"
+        }
+    })
+        .then(response =>response.json())
+        .then(json=> console.log(json))
+        .catch(error => console.log(error));
 }
-let promises = [
-    multiplier(1,2,2),
-    multiplier(5, 10, 4),
-    multiplier(6,7,6)
-];
-
-// Promise.all(promises)
-//     .then(answer => console.log(answer))
-//     .catch(error => console.log(error));
-
-Promise.race(promises)
-.then(answer => console.log(answer))
-.catch(error => console.log(error));
