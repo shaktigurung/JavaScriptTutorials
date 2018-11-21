@@ -1,20 +1,20 @@
-class List{
-    constructor(){
-        this.item = " ";
-    }
-    addItem(item){
-        this.item += item;
-    }
-    displayItem(){
-        console.log(this.item);
-       //document.getElementById("display").innerHTML = `${this.item} </br>`;
-    }
+//Counts number of item entered
+let clicks = 0;
+function click() {
+        clicks += 1;
+        document.getElementById("count").innerHTML = clicks;
+}
+document.getElementById("todo").addEventListener("click",createList);
+document.getElementById("todo").addEventListener("click",click);
+
+// Creates New list
+function createList(){
+    event.preventDefault();
+    let textBox = document.querySelector("input");
+    let newItem = document.createElement("li");
+    newItem.textContent = textBox.value;
+    document.querySelector("OL").appendChild(newItem);
+    textBox.value ="";
 }
 
-function itemList(list){
-    list.addItem(list);
-    list.displayItem();
-}
-let list = new List(input);
-document.getElementById("todo").addEventListener("click",()=> itemList(list));
-
+//
