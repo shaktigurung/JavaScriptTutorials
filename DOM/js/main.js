@@ -127,10 +127,10 @@ let p = div.querySelector("p");
 //{capture: true} it executes its event before going to others
 //{passive: true} turns off default
 
-p.addEventListener("click", function(){
-    event.stopPropagation(); //Stops event bubbling
-    alert("p clicked");
-});
+// p.addEventListener("click", function(){
+//     event.stopPropagation(); //Stops event bubbling
+//     alert("p clicked");
+// });
 
 
 //Remove event listener *********
@@ -145,3 +145,6 @@ function titleClick(event){
     alert("titile was clicked");
 }
 document.querySelector("h1").addEventListener("click", titleClick());
+document.querySelector("p").addEventListener("click", function(){
+    
+});
