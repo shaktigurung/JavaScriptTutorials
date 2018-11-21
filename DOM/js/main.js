@@ -120,10 +120,28 @@ title.classList.add("blue");
 
 let div = document.querySelector("div");
 let p = div.querySelector("p");
-div.addEventListener("click", function(){
-    alert("clicked div");
-});
+// div.addEventListener("click", function(){
+//     alert("clicked div");
+// },{passive: true}); 
+//just to use event listener once {once:true}
+//{capture: true} it executes its event before going to others
+//{passive: true} turns off default
 
 p.addEventListener("click", function(){
+    event.stopPropagation(); //Stops event bubbling
     alert("p clicked");
 });
+
+
+//Remove event listener *********
+div.addEventListener("click", function divClick(){
+    alert("clicked div");
+    div.removeEventListener("click", divClick);
+});
+
+//Remove item from another div
+
+function titleClick(event){
+    alert("titile was clicked");
+}
+document.querySelector("h1").addEventListener("click", titleClick());
