@@ -33,19 +33,19 @@
 //negative nth start from the end of the array
 //nthElement ([1,2,3,4,5,6,8], 2)
 
-let numArray = (arr, pattern) => {
-    let ans = [];
-    ans = pattern < 0 ? ans.reverse() : ans;
-    arr.forEach((element, index) => {
-        if((index+1)%pattern === 0){
-            ans.push(element);
-        }
-    });
-    return ans;
-}
+// let numArray = (arr, pattern) => {
+//     let ans = [];
+//     ans = pattern < 0 ? ans.reverse() : ans;
+//     arr.forEach((element, index) => {
+//         if((index+1)%pattern === 0){
+//             ans.push(element);
+//         }
+//     });
+//     return ans;
+// }
 
-let answer = numArray([1,2,3,4,5,6,8], -3);
-console.log(answer);
+// let answer = numArray([1,2,3,4,5,6,8], -3);
+// console.log(answer);
 
 
 //ES6 Fat arrow
@@ -82,3 +82,25 @@ console.log(answer);
 // } catch(err){
 //     console.log(err);
 // }
+
+
+// Write a function that separates a string of comma separated 
+
+    function separate(str){
+        //let arr = [];
+        //let res = str.split();
+        // for (let i = 0; i < res.length ; i++){
+            
+        //     arr.push = res[i];
+        // }
+        // return arr;
+        let pattern = new RegExp(/\w[^,]*/, 'g');
+        return str.match(pattern);
+    }
+   console.log(separate("garret, santosh, shakti, 20 , 40"));
+// values into an array without using .split()
+
+
+//Create a Runner class that has the properties, name, distance and place
+//Create a method that adds distance to an instance of runner and modifies their place and the other runners places
+//Create a method on the Runner class that shows the names of the runners in order from first place to last
