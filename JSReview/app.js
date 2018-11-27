@@ -33,10 +33,19 @@
 //negative nth start from the end of the array
 //nthElement ([1,2,3,4,5,6,8], 2)
 
-// let numArray = (arr, pos) => {
+let numArray = (arr, pattern) => {
+    let ans = [];
+    ans = pattern < 0 ? ans.reverse() : ans;
+    arr.forEach((element, index) => {
+        if((index+1)%pattern === 0){
+            ans.push(element);
+        }
+    });
+    return ans;
+}
 
-// }
-
+let answer = numArray([1,2,3,4,5,6,8], -3);
+console.log(answer);
 
 
 //ES6 Fat arrow
@@ -48,28 +57,28 @@
 // return x/y;
 // }
 
-let divide = (x,y) => {
+// let divide = (x,y) => {
     
-       if (typeof x === "number" && typeof y === "number"){
-        if (y === 0){
-            throw "Cannot have Zero as denominator";
-        }
-        else{
-            throw "Both input are Numbers";
-        }
-      }
-      else{
-          throw "Input is Not a number";   
-      }
+//        if (typeof x === "number" && typeof y === "number"){
+//             if (y === 0){
+//                 throw "Cannot have Zero as denominator";
+//             }
+//             else{
+//                 throw "Both input are Numbers";
+//             }
+//         }
+//         else{
+//             throw "Input is Not a number";   
+//         }
  
-    let answer = x/y;
-    console.log(answer);
-}
+//         let answer = x/y;
+//         console.log(answer);
+// }
 
-try {
- console.log(divide(2,0));
-// divide(4,2);
-// divide(2,"8");
-} catch(err){
-    console.log(err);
-}
+// try {
+//  console.log(divide(2,0));
+// // divide(4,2);
+// // divide(2,"8");
+// } catch(err){
+//     console.log(err);
+// }
