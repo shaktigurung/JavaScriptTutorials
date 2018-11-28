@@ -1,0 +1,22 @@
+h1{
+    text-align: center;
+    color: red;
+    font-size: 74px; 
+}
+ul{
+    list-style: none;
+    font-size: 1.5rem;
+    color: blue;
+    text-align: center;
+} 
+
+h2{
+    text-align: center;
+    color: red;
+    font-size: 50px; 
+}
+p{
+    text-align: center;
+    color: blue;
+    font-size: 1.5rem; 
+}

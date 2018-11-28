@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const expressHandleBars = require("express-handlebars");
+const students = require("./student");
+const restaurants = require("./restaurants");
 const app = express();
 const port = 3000;
 
@@ -11,24 +13,33 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(bodyParser.json());
 
-const students = ["Ivan", "Santosh", "Ghalip", "Hamish"];
+
+//const students = ["Ivan", "Santosh", "Ghalip", "Hamish"];
 
 //Throwing Error
 // app.use((req, res, next)=>{
 //     next(new Error("test"));
 // });
+app.use(express.static('public'));
 
 app.get("/", (req, res)=>{
    // res.send(["Ivan", "Santosh", "Ghalip", "Hamish"]);
     //res.send("Matching Student"); 
-    let randomIndexOne = Math.floor(Math.random()*students.length);
-    let randomIndexTwo = Math.floor(Math.random()*students.length);    
-    res.render("home", {name1: students[randomIndexOne],name2: students[randomIndexTwo]})
+    //console.log(students);
+    let randomIndexOne = Math.floor(Math.random()*students.students.length);
+    let randomIndexTwo = Math.floor(Math.random()*students.students.length); 
+    let randomIndexThree = Math.floor(Math.random()*students.students.length);  
+    let randomRestaurant = Math.floor(Math.random()*restaurants.restaurants.length);  
+    res.render("home", {name1: students.students[randomIndexOne],name2: students.students[randomIndexTwo], name3: students.students[randomIndexThree],
+    restaurant: restaurants.restaurants[randomRestaurant]});
 });
 
 app.get("/students", (req, res)=>{
     res.send(students);
 });
+app.get("/api/restaurants",(req, res)=>{
+    res.send(restaurants.restaurants);
+})
 
 app.post("/students",
         (req, res, next) =>{
@@ -37,8 +48,13 @@ app.post("/students",
         },
     (req, res)=>{
     //console.log(req.body);
-    students.push(req.body.name);
+    students.students.push(req.body.name);
     res.send("Creating a student");
+});
+
+app.post("/api/restaurants", (req, res)=>{
+    restaurants.restaurants.push(req.body.name);
+    res.send("Creating a restaurant");
 });
 
 app.listen(port, ()=> {
