@@ -86,21 +86,46 @@
 
 // Write a function that separates a string of comma separated 
 
-    function separate(str){
-        //let arr = [];
-        //let res = str.split();
-        // for (let i = 0; i < res.length ; i++){
-            
-        //     arr.push = res[i];
-        // }
-        // return arr;
-        let pattern = new RegExp(/\w[^,]*/, 'g');
-        return str.match(pattern);
-    }
-   console.log(separate("garret, santosh, shakti, 20 , 40"));
+//     function separate(str){
+//         let pattern = new RegExp(/\w[^,]*/, 'g');
+//         return str.match(pattern);
+//     }
+//    console.log(separate("garret, santosh, shakti, 20 , 40"));
 // values into an array without using .split()
 
 
 //Create a Runner class that has the properties, name, distance and place
 //Create a method that adds distance to an instance of runner and modifies their place and the other runners places
 //Create a method on the Runner class that shows the names of the runners in order from first place to last
+
+
+
+//Promises
+
+// let myPromise = new Promise(function(resolve, reject){
+//     resolve(10);
+//     reject('Error');
+// });
+
+// function promiseResolve (response){
+//     console.log(response);
+// }
+// myPromise
+//     .then(promiseResolve)
+//     .catch(console.log);
+
+function lazy(secs){
+    return new Promise(function(resolve, reject){
+        console.log(1);
+        setTimeout(function(){
+            return resolve();
+            console.log("?"); //This line will not get executed since resolve takes flow out
+        }, secs * 1000);
+        console.log(2);
+    });
+}
+
+lazy(4)
+    .then( data => {
+        console.log(3, 4);
+    });
