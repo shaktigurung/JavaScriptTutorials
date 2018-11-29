@@ -23,7 +23,21 @@ app.get("/contacts",(req, res)=>{
 });
 
 app.post("/contacts",(req, res)=>{
-
+    // console.log(req.body);
+    // res.send();
+    //We can use following way to get name and email
+    // let name = req.body.name;
+    // let email = req.body.email;
+    //Or use destructing like below to get name and email
+    let {name, email} = req.body; 
+   //this way or
+    // contacts.push({
+    //     name: name,
+    //     email: email
+    // });
+    //Syntatical way
+    contacts.push({name, email});
+    res.render("success");
 });
 
 
