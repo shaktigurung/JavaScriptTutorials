@@ -30,16 +30,16 @@ app.get("/", (req, res)=>{
     let randomIndexTwo = Math.floor(Math.random()*students.students.length); 
     let randomIndexThree = Math.floor(Math.random()*students.students.length);  
     let randomRestaurant = Math.floor(Math.random()*restaurants.restaurants.length);  
-    function count(number){
-        let count = 0;
-        let std = students.students;
-        for(let i = 0 ; i < std.length; i++){
-            if (number === students.students[i]){
-                count++;
-            }
-        }
-        return count;
-    }
+    // function count(number){
+    //     let count = 0;
+    //     let std = students.students;
+    //     for(let i = 0 ; i < std.length; i++){
+    //         if (number === students.students[i]){
+    //             count++;
+    //         }
+    //     }
+    //     return count; 
+    // }
     res.render("home", {name1: students.students[randomIndexOne],name2: students.students[randomIndexTwo], name3: students.students[randomIndexThree],
     restaurant: restaurants.restaurants[randomRestaurant]});
 });

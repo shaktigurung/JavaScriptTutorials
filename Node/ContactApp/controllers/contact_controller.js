@@ -1,13 +1,18 @@
 const ContactModel = require("./../database/models/contact_model");
 
+
 function newResource(req, res){
     //res.send("Home");
-    res.render("form");
+    res.render("home");
 }
 
+function newForm(req, res){
+    //res.send("Form");
+    res.render("form");
+}
 function index(req, res){
     // res.send(contacts);
-     ContactModel.find()
+       ContactModel.find()
         .then(contacts => {
             res.json(contacts);
         })
@@ -16,6 +21,26 @@ function index(req, res){
         });
       
  }
+
+ function enquiries(req, res){
+       
+    ContactModel.find()
+        .then(contacts => {
+            res.render("enquiries",{contacts});
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        });
+        
+ }
+
+ function deleteEnquiry(req, res){
+    document.getElementById("delete").addEventListener("click",function(){
+        alert("Delete is activated from controller");
+        //alert(db.contacts.find());
+     });
+ }
+
 
  function create(req, res){
     // console.log(req.body);
@@ -43,8 +68,13 @@ function index(req, res){
         });
 }
 
+
+
 module.exports = {
+    newForm,
+    enquiries,
     newResource,
+    deleteEnquiry,
     index,
     create
 }
