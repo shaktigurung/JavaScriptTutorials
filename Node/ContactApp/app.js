@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const exphbs= require("express-handlebars");
 const mongoose = require("mongoose");
 const app = express();
-const port = 3000;
+const port = 3001;
 
 mongoose.connect("mongodb://localhost/contact_app", {useNewUrlParser: true});
 mongoose.Promise = global.Promise;

@@ -17,5 +17,7 @@ app.use(bodyParser.json());
 mongoose.connect("mongodb://localhost/books_r_us", {useNewUrlParser: true} );
 mongoose.Promise = global.Promise;
 
+mongoose.connection.on("error", error => console.log(error));
+
 //Express server
 app.listen(port, ()=> console.log(`Server  is listening on port ${port}`));
