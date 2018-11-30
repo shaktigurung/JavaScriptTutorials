@@ -28,7 +28,7 @@ function edit(req, res){
 
 module.exports = {
     create,
-    index,
+    index,s
     make,
     destroy,
     show,
