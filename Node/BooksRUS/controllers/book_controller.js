@@ -34,7 +34,6 @@ async function show(req, res) {
     let { id } = req.params;
 
     let book = await BookModel.findById(id).populate('author');
-
     res.render("book/show", {book});
 }
 
