@@ -8,6 +8,11 @@ const DigimonSchema = new Schema({
     },
     weapon: {
         type: String,
+        required: true,
+        default: ""
+    },
+    kind: {
+        type: String,
         required: true
     }
 });

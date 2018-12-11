@@ -1,0 +1,25 @@
+<h1>Edit digimon</h1>
+<form action="/digimons/{{digimon._id}}?_method=PUT" method="post">
+    <div>
+        <label for="">Name</label>
+    </div>
+    <div>
+        <input type="text" name="name" value= "{{digimon.name}}"/>
+    </div>
+    <div>
+        <label for="">Weapon</label>
+    </div>
+    <div>
+        <input type="text" name="weapon" value="{{digimon.weapon}}">
+    </div>
+      <div>
+        <label for="">Kind</label>
+    </div>
+    <div>
+        <input type="text" name="kind" value="{{digimon.kind}}">
+    </div>
+    <div>
+        <input type="submit" value="Submit form"/>
+    </div>
+
+</form>

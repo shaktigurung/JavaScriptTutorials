@@ -1,25 +1,40 @@
 const DigimonModel = require("./../database/models/digimon_model");
 
-function create(){
-    
+async function create(req, res){
+    let {name, weapon, kind} = req.body;
+    let digimon = await DigimonModel.create({name, weapon, kind})
+    .catch(err => res.status(500).send(err));
+    res.redirect(`/digimons/${digimon._id}`);
 }
-function index(){
-
+async function index(req, res){
+    let digimons = await DigimonModel.find();
+    //console.log(digimons);
+    res.render("digimon/index", {digimons});
 }
-function show(){
 
+async function make(req, res){
+    res.render("digimon/new");
 }
-function make(){
-
+async function show(req, res){
+    let {id} = req.params;
+    let digimon = await DigimonModel.findById(id);
+    res.render("digimon/show", {digimon});
 }
-function destroy(){
-
+async function destroy(req, res){
+    let {id} = req.params;
+    await DigimonModel.findOneAndDelete(id);
+    res.redirect("/digimons");
 }
-function update(){
-
+async function update(req, res){
+    let {name, weapon, kind} = req.body;
+    let {id} = req.params;
+    await DigimonModel.findOneAndUpdate(id, {name, weapon, kind});
+    res.redirect(`/digimons/${id}`);
 }
-function edit(){
-
+async function edit(req, res){
+    let {id} = req.params;
+    let digimon = await DigimonModel.findById(id);
+    res.render("digimon/edit", {digimon});
 }
 
 

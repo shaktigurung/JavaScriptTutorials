@@ -1,0 +1,14 @@
+<h1>All Digimons</h1>
+
+{{#each digimons}}
+
+<div>
+    <p> Name: {{this.name}}</p>
+    <p> Weapon: {{this.weapon}}</p>
+    <p> Kind: {{this.kind}} </p>
+</div>
+<a href="/digimons/{{this._id}}">Show</a>
+<a href="/digimons/{{this._id}}/EDIT">Edit</a>
+<a href="/digimons/{{this._id}}?_method=DELETE">Delete</a>
+<hr/>
+{{/each}}
