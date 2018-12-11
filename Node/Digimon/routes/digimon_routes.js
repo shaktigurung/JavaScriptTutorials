@@ -5,6 +5,7 @@ const {celebrate, Joi} = require("celebrate");
 
 //the order of this routes matter
 router.get("/", DigimonController.index);
+router.get("/", DigimonController.index);
 
 router.post("/", celebrate({
     body: {
