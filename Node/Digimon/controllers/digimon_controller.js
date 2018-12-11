@@ -3,13 +3,16 @@ const DigimonModel = require("./../database/models/digimon_model");
 async function create(req, res){
     let {name, weapon, kind} = req.body;
     let digimon = await DigimonModel.create({name, weapon, kind})
-    .catch(err => res.status(500).send(err));
-    res.redirect(`/digimons/${digimon._id}`);
+     .catch(err => res.status(500).send(err));
+    //res.redirect(`/digimons/${digimon._id}`);
+    res.json(digimon);
 }
+
 async function index(req, res){
     let digimons = await DigimonModel.find();
     //console.log(digimons);
-    res.render("digimon/index", {digimons});
+    //res.render("digimon/index", {digimons});
+    res.json(digimons);
 }
 
 async function make(req, res){
@@ -18,7 +21,8 @@ async function make(req, res){
 async function show(req, res){
     let {id} = req.params;
     let digimon = await DigimonModel.findById(id);
-    res.render("digimon/show", {digimon});
+    //res.render("digimon/show", {digimon});
+    res.json(digimon);
 }
 async function destroy(req, res){
     let {id} = req.params;

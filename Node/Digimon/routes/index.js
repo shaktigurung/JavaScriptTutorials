@@ -4,8 +4,8 @@ const digimonRoutes = require("./digimon_routes");
 
 
 router.use("/digimons", digimonRoutes);
-router.use("/", (req, res)=>{
-    res.render("welcome/welcome");
-});
+// router.use("/", (req, res)=>{
+//     res.render("welcome/welcome");
+// });
 
 module.exports = router;
