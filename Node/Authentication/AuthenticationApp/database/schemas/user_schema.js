@@ -14,4 +14,5 @@ const UserSchema = new Schema({
 });
 
 UserSchema.plugin(require("mongoose-bcrypt"));
+
 module.exports = UserSchema;
