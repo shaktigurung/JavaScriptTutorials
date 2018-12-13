@@ -41,4 +41,15 @@ router.get("/logout", AuthenticationController.logout);
 //Using Json web token
 router.get("/dashboard", passport.authenticate('jwt', {session: false}) ,PageController.dashboard)
 
+//Sending to Google for verification
+router.get("/oauth/google", passport.authenticate('google', {
+    scope: ['profile', 'email']
+}));
+
+//Google comes back through this url
+router.get("/oauth/google/callback", passport.authenticate('google', {
+    failureRedirect: "/login",
+    session: false
+}), AuthenticationController.generateJWT);
+
 module.exports = router;

@@ -32,14 +32,22 @@ async function create(req, res, next){
     const user = await UserModel.create(req.body);
     // req.session.user = user;
     //res.redirect("/dashboard");
+    // const token = jwt.sign({sub: req.user._id}, process.env.JWT_SECRET);
+    // res.cookie("jwt", token);
+    // //res.json(token);
+    // res.redirect("/dashboard");
 
     //using passport
-    req.login(user, (err)=>{
-        if(err){
-            return next(err);
-        }
-        res.redirect("/dashboard");
-    });
+    // req.login(user, (err)=>{
+    //     if(err){
+    //         return next(err);
+    //     }
+    //     res.redirect("/dashboard");
+    // });
+
+    const token = jwt.sign({ sub: user._id }, process.env.JWT_SECRET);
+    req.session.jwt = token;
+    res.redirect("/dashboard");
 }
 function logout(req, res){
     //  req.session.destroy(()=>{
