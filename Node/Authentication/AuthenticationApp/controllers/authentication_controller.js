@@ -1,4 +1,6 @@
 const UserModel = require("./../database/models/user_model");
+const jwt = require("jsonwebtoken");
+
 
 function loginForm(req, res){
     res.render("authentication/login_form");
@@ -24,17 +26,36 @@ async function loginVerify(req, res){
 function make(req, res){
     res.render("authentication/make");
 }
-async function create(req, res){
+async function create(req, res, next){
     //res.json(req.body);
     //const {email, password} = req.body;
     const user = await UserModel.create(req.body);
-    req.session.user = user;
-    res.redirect("/dashboard");
+    // req.session.user = user;
+    //res.redirect("/dashboard");
+
+    //using passport
+    req.login(user, (err)=>{
+        if(err){
+            return next(err);
+        }
+        res.redirect("/dashboard");
+    });
 }
 function logout(req, res){
-     req.session.destroy(()=>{
-         res.redirect("/");
-     });
+    //  req.session.destroy(()=>{
+    //      res.redirect("/");
+    //  });
+    req.logout();
+    //for cookie expiring
+    res.cookie("jwt", null, {maxAge: -1});
+    res.redirect("/");
+}
+
+function generateJWT(req, res){
+    const token = jwt.sign({sub: req.user._id}, process.env.JWT_SECRET);
+    res.cookie("jwt", token);
+    //res.json(token);
+    res.redirect("/dashboard");
 }
 
 
@@ -43,5 +64,6 @@ module.exports = {
     loginVerify,
     make,
     create,
-    logout
+    logout,
+    generateJWT
 }
