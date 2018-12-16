@@ -3,7 +3,6 @@ function index(req, res){
     res.json(req.session.views);
 }
 function dashboard(req, res){
-    //res.json(req.session.user);
     res.json(req.user);
 }
 

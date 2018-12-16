@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const UserModel = require("./../database/models/user_model")
+const UserModel = require("./../database/models/user_model");
 const {Strategy: JwtStrategy, ExtractJwt} = require("passport-jwt");
 const {Strategy: GoogleStrategy} = require("passport-google-oauth20");
 

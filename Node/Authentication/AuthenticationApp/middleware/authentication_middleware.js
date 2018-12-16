@@ -9,7 +9,7 @@ function authorize(req, res, next){
 };
 
 function authorizeUser(req, res, next){
-    if(req.session && req.session.user){
+    if(req.user){
         return res.redirect("/dashboard");
     }
     next();
