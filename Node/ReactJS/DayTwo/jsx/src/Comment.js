@@ -1,19 +1,30 @@
 import React from "react";
-import faker from "faker";
+//import faker from "faker";
 
-const Comment = () =>{
-    return(
-        <div className="comment">
-            <a href="/" className="avatar">
-                <img alt="avatar" src={faker.image.avatar()} />
-            </a>
-            <div className="content">
-                <a href="/" className="author">Mary Smith</a>
-                <p className="date">11/12 6:00pm</p>
-                <p className="text">I think you are really cool!</p>
+function isDirtyWords(input){
+    return input.match(/banana/);
+}
+
+const Comment = (props) =>{
+    if(!isDirtyWords(props.text)){
+        return(
+            <div className="comment">
+                <a href="/" className="avatar">
+                    <img alt="avatar" src={props.avatar} />
+                </a>
+                <div className="content">
+                    <a href="/" className="author">{props.name}</a>
+                    <p className="d">{props.date}</p>
+                    <p className="text">{props.text}</p>
+                </div>
             </div>
+        )
+    }
+    return (
+        <div>
+            Banned Comment!
         </div>
-    )
+    );
 }
 
 export default  Comment;
