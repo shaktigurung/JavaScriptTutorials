@@ -1,18 +1,18 @@
 import React from "react";
 
-const Contact = ()=>{
+const Contact = (props)=>{
     return (
         <div>
         <section id="contact">
         <h2>Contact Details</h2>
         <p>
-            <b>Phone:</b> <i>+12345678</i>
+            <b>Phone:</b> <i>{props.phonenumber}</i>
         </p>
          <p>
-            <b>Email:</b> <i>thatsme@test.com</i>
+            <b>Email:</b> <i>{props.email}</i>
         </p>
         <p>
-            <b>Twitter:</b> <i>#superfun</i>
+            <b>Twitter:</b> <i>{props.twitter}</i>
         </p>
         </section>
         </div>
