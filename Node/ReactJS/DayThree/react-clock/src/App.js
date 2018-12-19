@@ -4,21 +4,34 @@ import Clock from "./Clock";
 class App extends Component{
     state = {latitude: null, errorMessage: "", value: 1}; //Syntatical sugar
 
-    constructor(props){
-        super(props); // Helps to call parent constructor which in this case is  "Component"
-       // this.state = {latitude: null, errorMessage: ""};
+    // constructor(props){
+    //     super(props); // Helps to call parent constructor which in this case is  "Component"
+    //    // this.state = {latitude: null, errorMessage: ""};
+    //     // setInterval(()=>{
+    //     //     this.setState((state, props) =>{
+    //     //         return {value: state.value + 1};
+    //     //     });
+    //     // }, 1000);
 
+    // }
+
+    //Lifecycle Methods
+    componentDidMount(){
+        console.log("mounted");
         window.navigator.geolocation.getCurrentPosition(
             position => {this.setState({latitude: position.coords.latitude})},
             error => {this.setState({errorMessage: error.message })}
         );
-
-        setInterval(()=>{
-            this.setState((state, props) =>{
-                return {value: state.value + 1};
-            });
-        }, 1000);
-
+        // this.timer = setInterval(()=>{
+        //     console.log("going");
+        // }, 1000);
+    }
+    componentDidUpdate(){
+        console.log("Updated");
+    }
+    componentWillUnmount(){
+        console.log("unmounted");
+        clearInterval(this.timer);
     }
 
     isItWarm(){
@@ -50,10 +63,9 @@ class App extends Component{
     }
 
     render(){
-        const {latitude, errorMessage, value} = this.state;
+        const {latitude, errorMessage} = this.state;
         return (
             <div> 
-                 {value}
                  {this.isItWarm()}
                 
                  {errorMessage || <Clock 
