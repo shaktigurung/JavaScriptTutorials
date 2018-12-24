@@ -1,10 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDom from "react-dom";
+import "./index.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function MyInfo(){
+    return(
+        <div className="myinfo">
+            <h1>Shakti Gurung </h1>
+            <p>I am an aspiring Full Stack Web Developer </p>
+            <h2> My Top Vacation Spot </h2>
+            <div>
+                <ul>
+                    <li>Japan</li>
+                    <li>Korea</li>
+                    <li>NewZealand</li>
+                </ul>
+            </div>
 
+        </div>
+    );
+}
 
-serviceWorker.unregister();
+ReactDom.render( <MyInfo />,document.getElementById("root"));
