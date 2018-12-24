@@ -1,13 +1,12 @@
 import React from "react";
-import ReactDom from "react-dom";
 
 function NavBar(){
     return(
-        <nav>
+        <nav className="navbar">
             <ul>
-                <a href=""><li>Home</li></a>
-                <a href=""><li>About</li></a>
-                <a href=""><li>Contact</li></a>
+                <a href="#home"><li>Home</li></a>
+                <a href="#about"><li>About</li></a>
+                <a href="#contact"><li>Contact</li></a>
             </ul>
         </nav>
     );
