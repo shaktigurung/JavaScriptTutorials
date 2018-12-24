@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDom from "react-dom";
-import MyInfo from "./MyInfo";
 import Footer from "./Footer";
-import Header from "./Header";
+import NavBar from "./NavBar";
+import MainContent from "./MainContent";
 
 function App(){
     return (
             <div>
-                <Header />
-                <MyInfo />
+                <NavBar />
+                <MainContent />
                 <Footer />
             </div>
     );

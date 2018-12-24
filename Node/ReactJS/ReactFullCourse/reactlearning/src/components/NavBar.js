@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 
-function Header(){
+function NavBar(){
     return(
         <nav>
             <ul>
@@ -13,4 +13,4 @@ function Header(){
     );
 }
 
-export default Header;
+export default NavBar;
