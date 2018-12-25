@@ -13,6 +13,9 @@ function JokeList(){
             <Joke 
                 joke = {{ question:"What did the grape say when it was stepped on? ", punchline:"Nothing, it just let out a little wine."}}
             />
+            <Joke
+                joke = {{ punchline: "this is testing"}}
+             />
         </div>
 
     );

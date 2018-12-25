@@ -3,8 +3,9 @@ import React from "react";
 function Joke({joke}){
     return(
         <div>
-            <p>Question: {joke.question}</p>
-            <p>PunchLine: {joke.punchline}</p>
+            <p style={{display: joke.question ? "block" : "none"}}>Question: {joke.question}</p>
+            <p style= {{color:!joke.question && "blue"}}>PunchLine: {joke.punchline}</p>
+            <hr/>
         </div>
     );
 }
