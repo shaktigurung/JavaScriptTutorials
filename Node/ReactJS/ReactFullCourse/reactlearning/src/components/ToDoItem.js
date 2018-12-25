@@ -1,11 +1,11 @@
 import React from "react";
 
-function ToDoItem(){
-      
+function ToDoItem({item}){
+
     return(
         <div>
             <input type="checkbox" />
-            <label> Label goes here </label>
+            <label> {item} </label>
         </div>
     );
 }
