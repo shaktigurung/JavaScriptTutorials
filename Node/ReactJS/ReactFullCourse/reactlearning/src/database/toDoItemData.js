@@ -19,6 +19,11 @@ const ToDoItemData = [
                 id: "4",
                 todo: "Travel World",
                 completed:true
+            },
+            {
+                id: "5",
+                todo: "Hiking",
+                completed:true
             }
 ];
 

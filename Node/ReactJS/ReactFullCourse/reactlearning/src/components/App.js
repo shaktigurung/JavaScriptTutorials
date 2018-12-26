@@ -7,13 +7,12 @@ class App extends Component{
     constructor(){
         super();
         this.state = {
-            answer: "Yes"
+            
         }
     }
     render(){
         return (
             <div>
-                <p>This is test class</p>
                 <NavBar />
                 <MainContent />
                 <Footer />

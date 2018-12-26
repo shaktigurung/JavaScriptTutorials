@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from "react";
+import ReactDom from "react-dom";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+class App extends Component{
+    constructor(){
+        super();
+        this.state = {
+            username: "Jhilke",
+            age: 24,
+            isLogIn: true
+        }
+    }
+
+    render(){
+        let logstatus;
+        if(this.state.isLogIn ===true){
+            logstatus ="You are logged in";
+        }else{
+           logstatus = "You are logged out";
+        }
+        return(
+                <div>
+                    <h1>Welcome {this.state.username} to State Class </h1>
+                    <p>You are now {this.state.age} years old </p>
+                    <p> {logstatus}</p>
+                </div>
+        );
+    }
 }
 
 export default App;
