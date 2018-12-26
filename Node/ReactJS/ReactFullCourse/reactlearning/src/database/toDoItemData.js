@@ -1,19 +1,24 @@
 const ToDoItemData = [
             {
                 id: "1",
-                todo: "Study"
+                todo: "Study",
+                completed:true            
+
             },
             {
                 id: "2",
-                todo: "Earn Money"
+                todo: "Earn Money",
+                completed:false
             },
             {
                 id: "3",
-                todo: "Buy Gadgets"
+                todo: "Buy Gadgets",
+                completed:false
             },
             {
                 id: "4",
-                todo: "Travel World"
+                todo: "Travel World",
+                completed:true
             }
 ];
 

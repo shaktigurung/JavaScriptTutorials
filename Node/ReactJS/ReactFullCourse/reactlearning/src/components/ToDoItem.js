@@ -4,7 +4,7 @@ function ToDoItem({item}){
 
     return(
         <div>
-            <input type="checkbox" />
+            <input type="checkbox" checked={item.completed} />
             <label> {item} </label>
         </div>
     );
