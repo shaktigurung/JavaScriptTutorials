@@ -4,7 +4,7 @@ function ToDoItem({item}){
 
     return(
         <div>
-            <input type="checkbox" checked={item.completed} />
+            <input type="checkbox" onChange={()=> console.log("I was changed")} />
             <label> {item} </label>
         </div>
     );

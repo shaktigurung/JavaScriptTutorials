@@ -5,6 +5,7 @@ import Timer from "./Timer";
 import ContactCard from "./ContactCard";
 import JokeList from "./JokeList";
 import ProductList from "./ProductList";
+import Count from "./Count";
 
 function MainContent(){
    
@@ -12,6 +13,7 @@ function MainContent(){
         <div>
             <h2>I am from Main content</h2>
             <Timer />
+            <Count />
             <MyInfo />
             <ToDoList />
             <JokeList />
