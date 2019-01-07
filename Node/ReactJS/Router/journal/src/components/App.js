@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {BrowserRouter, Route} from "react-router-dom";
+import {BrowserRouter, Route, Link} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NewEntryPage from "./pages/NewEntryPage";
 import CategorySelectionPage from "./pages/CategorySelectionPage";
@@ -38,6 +38,9 @@ class App extends Component{
                 {this.getPage()} */}
                 <BrowserRouter>
                     <div>
+                        <Link to="/">Home</Link>
+                        <Link to="/category">Category</Link>
+                        <Link to="/entry">Entry</Link>
                         <Route exact path="/" component={HomePage} />
                         <Route exact path="/category" component={CategorySelectionPage} />
                         <Route exact path="/entry" component={NewEntryPage} />

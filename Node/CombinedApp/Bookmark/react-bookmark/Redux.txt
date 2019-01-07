@@ -1,0 +1,5 @@
+Action Creator - a function that returns an Action
+Action - Javascript object that has a type
+Dispatch- Makes copies of our action and gives those copies to Reducers
+Reducers-  pieces of state
+State- a combination of all the Reducers
