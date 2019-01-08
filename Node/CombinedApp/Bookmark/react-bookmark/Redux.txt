@@ -3,3 +3,12 @@ Action - Javascript object that has a type
 Dispatch- Makes copies of our action and gives those copies to Reducers
 Reducers-  pieces of state
 State- a combination of all the Reducers
+
+//Redux is global state library
+{
+    bookmarks: BookmarkListReducer
+    user: UserReducer
+}
+
+//npm install redux react-redux 
+react-redux is a glue to connect redux and react
