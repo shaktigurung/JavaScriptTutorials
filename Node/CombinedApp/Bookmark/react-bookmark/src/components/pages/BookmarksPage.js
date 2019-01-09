@@ -18,14 +18,33 @@ class BookmarksPage extends Component{
         this.setState({bookmarks});
     }
     render(){
+        const {bookmarks} = this.props;
+
         return(
             <div>
                 <h4> New Bookmark </h4>
-                <BookmarkForm  onBookmarkFormSubmit= {this.onBookmarkFormSubmit}/>
+                {/* <BookmarkForm  onBookmarkFormSubmit= {this.onBookmarkFormSubmit}/> */}
+                <BookmarkForm />
+                <h2>My Bookmarks </h2>
+                <ul>
+                    {bookmarks.map(bookmark=>{
+                        return(
+                            <li key={bookmark._id}>
+                                <a href={bookmark.url} > {bookmark.title} </a>
+                            </li>
+                        );
+                    })}
+                </ul>
             </div>
         );
     }
 }
-export default connect(null, {
+
+const mapStateToProps = (state)=>{
+    return {
+        bookmarks: state.bookmarks
+    }
+}
+export default connect(mapStateToProps, {
     fetchBookmarks
 })(BookmarksPage);
