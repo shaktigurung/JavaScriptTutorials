@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {BrowserRouter, Route, Link} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NewEntryPage from "./pages/NewEntryPage";
 import CategorySelectionPage from "./pages/CategorySelectionPage";
@@ -27,7 +27,23 @@ class App extends Component{
     //     this.setState({location});
     // }
 
+    state ={
+        categories: ["food", "thoughts", "romance"],
+        entries: []
+    }
+    componentDidUpdate(){
+        console.log(this.state);
+    }
+    onEntryFormSubmit=(entry)=>{
+        this.setState((state)=>{
+            return {
+                entries: [...state.entries, entry]
+            }
+        });
+    }
+
     render(){
+        const {categories} = this.state;
         return(
             <div>
 
@@ -38,12 +54,23 @@ class App extends Component{
                 {this.getPage()} */}
                 <BrowserRouter>
                     <div>
-                        <Link to="/">Home</Link>
+                        {/* <Link to="/">Home</Link>
                         <Link to="/category">Category</Link>
-                        <Link to="/entry">Entry</Link>
+                        <Link to="/entry">Entry</Link> */}
                         <Route exact path="/" component={HomePage} />
-                        <Route exact path="/category" component={CategorySelectionPage} />
-                        <Route exact path="/entry" component={NewEntryPage} />
+                        {/* <Route exact path="/category" component={CategorySelectionPage} /> */}
+                        <Route 
+                            exact path="/category" 
+                            render ={(props)=> {
+                                return <CategorySelectionPage {...props} categories = {categories}/>
+                            }}
+                        />
+                        <Route 
+                            exact path="/entry/new/:index" 
+                            render = {(props)=>{
+                                return <NewEntryPage {...props} categories={categories} onEntryFormSubmit = {this.onEntryFormSubmit} />
+                            }}
+                        />
                     </div>
                 </BrowserRouter>
             </div>
@@ -52,3 +79,6 @@ class App extends Component{
 }
 
 export default App;
+
+
+//react-router-dom = redirect and switch topic to be learned

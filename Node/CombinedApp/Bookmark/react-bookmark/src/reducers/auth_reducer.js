@@ -1,6 +1,6 @@
 
 const defaultState ={
-    token: null
+    token: sessionStorage.getItem("token") || null
 };
 
 // Action
