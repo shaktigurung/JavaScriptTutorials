@@ -15,6 +15,6 @@ const UserSchema = new Schema({
     orders: [OrderSchema]
 });
 
-User.plugin(passportLocalMongoose, {usernameField: "email"});
+UserSchema.plugin(passportLocalMongoose, {usernameField: "email"});
 
 module.exports = UserSchema;

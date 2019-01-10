@@ -1,5 +1,5 @@
 const {Schema} = require("mongoose");
-const {ProductSchema} = require("./product_schema");
+const ProductSchema = require("./product_schema");
 
 const OrderSchema = new Schema({
         deliveryAddress: {
