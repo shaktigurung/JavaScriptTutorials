@@ -1,8 +1,8 @@
-const {Schema} = require("mongoose");
+const { Schema } = require("mongoose");
 
 const ProductSchema = new Schema({
-    description:{
-        type: String
+    description: {
+        type: String,
     },
     name: {
         type: String,
@@ -16,7 +16,7 @@ const ProductSchema = new Schema({
     price: {
         type: Number,
         required: true,
-        min: 0
+        min: 0 
     }
 });
 
